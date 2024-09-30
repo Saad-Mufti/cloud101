@@ -40,7 +40,7 @@ class Car(db.Model):
     model = db.Column(db.String(50), nullable=False)
     year = db.Column(db.Integer, nullable=False)
     cost = db.Column(db.Float, nullable=False)
-    image = db.Column(db.String(255))
+    image_url = db.Column(db.String(255))
     mileage = db.Column(db.Integer)
     fuel_type = db.Column(db.String(20))
 
@@ -51,7 +51,7 @@ class Car(db.Model):
             'model': self.model,
             'year': self.year,
             'cost': self.cost,
-            'image': self.image,
+            'image_url': self.image_url,
             'mileage': self.mileage,
             'fuel_type': self.fuel_type
         }
@@ -76,7 +76,7 @@ def create_car():
         model=data['model'],
         year=data['year'],
         cost=data['cost'],
-        image=data.get('image'),
+        image_url=data.get('image_url'),
         mileage=data.get('mileage'),
         fuel_type=data.get('fuel_type')
     )
@@ -92,7 +92,7 @@ def update_car(car_id):
     car.model = data.get('model', car.model)
     car.year = data.get('year', car.year)
     car.cost = data.get('cost', car.cost)
-    car.image = data.get('image', car.image)
+    car.image_url = data.get('image_url', car.image_url)
     car.mileage = data.get('mileage', car.mileage)
     car.fuel_type = data.get('fuel_type', car.fuel_type)
     db.session.commit()

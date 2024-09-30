@@ -8,11 +8,11 @@ import { Select } from './components/select';
 const API_URL = process.env.BACKEND_BASE_URL || 'http://localhost:5000/api';
 
 const carData = [
-  { id: 1, make: 'Toyota', model: 'Camry', year: 2022, cost: 25000, image: '/api/placeholder/400/300', mileage: 15000, fuelType: 'Gasoline' },
-  { id: 2, make: 'Honda', model: 'Civic', year: 2023, cost: 22000, image: '/api/placeholder/400/300', mileage: 5000, fuelType: 'Hybrid' },
-  { id: 3, make: 'Ford', model: 'Mustang', year: 2021, cost: 35000, image: '/api/placeholder/400/300', mileage: 20000, fuelType: 'Gasoline' },
-  { id: 4, make: 'Tesla', model: 'Model 3', year: 2023, cost: 45000, image: '/api/placeholder/400/300', mileage: 1000, fuelType: 'Electric' },
-  { id: 5, make: 'Chevrolet', model: 'Silverado', year: 2022, cost: 38000, image: '/api/placeholder/400/300', mileage: 18000, fuelType: 'Diesel' },
+  { id: 1, make: 'Toyota', model: 'Camry', year: 2022, cost: 25000, image_url: '/api/placeholder/400/300', mileage: 15000, fuelType: 'Gasoline' },
+  { id: 2, make: 'Honda', model: 'Civic', year: 2023, cost: 22000, image_url: '/api/placeholder/400/300', mileage: 5000, fuelType: 'Hybrid' },
+  { id: 3, make: 'Ford', model: 'Mustang', year: 2021, cost: 35000, image_url: '/api/placeholder/400/300', mileage: 20000, fuelType: 'Gasoline' },
+  { id: 4, make: 'Tesla', model: 'Model 3', year: 2023, cost: 45000, image_url: '/api/placeholder/400/300', mileage: 1000, fuelType: 'Electric' },
+  { id: 5, make: 'Chevrolet', model: 'Silverado', year: 2022, cost: 38000, image_url: '/api/placeholder/400/300', mileage: 18000, fuelType: 'Diesel' },
 ];
 
 const Header = () => (
@@ -40,7 +40,7 @@ const SearchBar = ({ onSearch }) => (
 
 const CarCard = ({ car }) => (
   <Card className="overflow-hidden">
-    <img src={car.image} alt={`${car.make} ${car.model}`} className="w-full h-48 object-cover" />
+    <img src={car.image_url} alt={`${car.make} ${car.model}`} className="w-full h-48 object-cover" />
     <CardHeader>
       <CardTitle>{car.make} {car.model}</CardTitle>
     </CardHeader>
