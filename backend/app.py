@@ -131,9 +131,9 @@ def search_cars():
     if max_year:
         filters.append(Car.year <= max_year)
     if min_price:
-        filters.append(Car.price >= min_price)
+        filters.append(Car.cost >= min_price)
     if max_price:
-        filters.append(Car.price <= max_price)
+        filters.append(Car.cost <= max_price)
     if min_mileage:
         filters.append(Car.mileage >= min_mileage)
     if max_mileage:

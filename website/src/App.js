@@ -5,7 +5,9 @@ import { Input } from './components/input';
 import { Search } from 'lucide-react';
 import { Select } from './components/select';
 
-const API_URL = process.env.BACKEND_BASE_URL || 'http://localhost:5000/api';
+const API_URL = process.env.REACT_APP_BACKEND_BASE_URL || 'http://localhost:5000/api';
+console.log("env = " + process.env)
+console.log("env = " + process.env["NODE_ENV"])
 
 const carData = [
   { id: 1, make: 'Toyota', model: 'Camry', year: 2022, cost: 25000, image_url: '/api/placeholder/400/300', mileage: 15000, fuelType: 'Gasoline' },
