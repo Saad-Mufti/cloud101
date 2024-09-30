@@ -8,11 +8,11 @@ import { Select } from './components/select';
 const API_URL = process.env.BACKEND_BASE_URL || 'http://localhost:5000/api';
 
 const carData = [
-  { id: 1, make: 'Toyota', model: 'Camry', year: 2022, price: 25000, image: '/api/placeholder/400/300', mileage: 15000, fuelType: 'Gasoline' },
-  { id: 2, make: 'Honda', model: 'Civic', year: 2023, price: 22000, image: '/api/placeholder/400/300', mileage: 5000, fuelType: 'Hybrid' },
-  { id: 3, make: 'Ford', model: 'Mustang', year: 2021, price: 35000, image: '/api/placeholder/400/300', mileage: 20000, fuelType: 'Gasoline' },
-  { id: 4, make: 'Tesla', model: 'Model 3', year: 2023, price: 45000, image: '/api/placeholder/400/300', mileage: 1000, fuelType: 'Electric' },
-  { id: 5, make: 'Chevrolet', model: 'Silverado', year: 2022, price: 38000, image: '/api/placeholder/400/300', mileage: 18000, fuelType: 'Diesel' },
+  { id: 1, make: 'Toyota', model: 'Camry', year: 2022, cost: 25000, image: '/api/placeholder/400/300', mileage: 15000, fuelType: 'Gasoline' },
+  { id: 2, make: 'Honda', model: 'Civic', year: 2023, cost: 22000, image: '/api/placeholder/400/300', mileage: 5000, fuelType: 'Hybrid' },
+  { id: 3, make: 'Ford', model: 'Mustang', year: 2021, cost: 35000, image: '/api/placeholder/400/300', mileage: 20000, fuelType: 'Gasoline' },
+  { id: 4, make: 'Tesla', model: 'Model 3', year: 2023, cost: 45000, image: '/api/placeholder/400/300', mileage: 1000, fuelType: 'Electric' },
+  { id: 5, make: 'Chevrolet', model: 'Silverado', year: 2022, cost: 38000, image: '/api/placeholder/400/300', mileage: 18000, fuelType: 'Diesel' },
 ];
 
 const Header = () => (
@@ -45,7 +45,7 @@ const CarCard = ({ car }) => (
       <CardTitle>{car.make} {car.model}</CardTitle>
     </CardHeader>
     <CardContent>
-      <p className="font-semibold text-lg">${car.price.toLocaleString()}</p>
+      <p className="font-semibold text-lg">${car.cost.toLocaleString()}</p>
       <p>Year: {car.year}</p>
       <p>Mileage: {car.mileage.toLocaleString()} miles</p>
       <p>Fuel Type: {car.fuel_type}</p>

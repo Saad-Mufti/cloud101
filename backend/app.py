@@ -10,35 +10,25 @@ CORS(app)
 
 cloud_sql_connection_name = os.environ.get('CLOUD_SQL_CONNECTION_NAME', 'mtc-cloud101:us-central1:cars')
 
-# Configure SQLAlchemy to use Unix socket
-socket_dir = '/cloudsql'
-socket_path = f'{socket_dir}/{cloud_sql_connection_name}'
-
 is_local = os.environ.get('LOCAL_DEV') == '1'
 db_user = os.environ.get('DB_USER', 'postgres')
 db_pass = os.environ.get('DB_PASS', 'password')
 db_name = os.environ.get('DB_NAME', 'postgres')
 db_host = os.environ.get('DB_HOST', 'localhost')
 
-# app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql+psycopg2://{db_user}:{db_pass}@/{db_name}?host={socket_path}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{db_user}:{db_pass}@{db_host}/{db_name}'
 
-if is_local:
-    # Local SQLite database
-    print("Running in local environment")
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{db_user}:{db_pass}@{db_host}/{db_name}'
-else:
-    # Cloud SQL connection details
-    db_user = os.environ.get('DB_USER', "postgres")
-    db_pass = os.environ.get('DB_PASS', 'password')
-    db_name = os.environ.get('DB_NAME', 'postgres')
+# if is_local:
+#     # Local SQLite database
+#     print("Running in local environment")
+# else:
+#     # Cloud SQL connection details
+#     db_user = os.environ.get('DB_USER', "postgres")
+#     db_pass = os.environ.get('DB_PASS', 'password')
+#     db_name = os.environ.get('DB_NAME', 'postgres')
 
-    # Configure SQLAlchemy to use Unix socket in production
-    socket_dir = '/cloudsql'
-    socket_path = f'{socket_dir}/{cloud_sql_connection_name}'
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql+psycopg2://{db_user}:{db_pass}@/{db_name}?host={socket_path}'
-
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+#     app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql+psycopg2://{db_user}:{db_pass}@/{db_name}?host={socket_path}'
 
 db = SQLAlchemy(app)
 
@@ -49,7 +39,7 @@ class Car(db.Model):
     make = db.Column(db.String(50), nullable=False)
     model = db.Column(db.String(50), nullable=False)
     year = db.Column(db.Integer, nullable=False)
-    price = db.Column(db.Float, nullable=False)
+    cost = db.Column(db.Float, nullable=False)
     image = db.Column(db.String(255))
     mileage = db.Column(db.Integer)
     fuel_type = db.Column(db.String(20))
@@ -60,7 +50,7 @@ class Car(db.Model):
             'make': self.make,
             'model': self.model,
             'year': self.year,
-            'price': self.price,
+            'cost': self.cost,
             'image': self.image,
             'mileage': self.mileage,
             'fuel_type': self.fuel_type
@@ -85,7 +75,7 @@ def create_car():
         make=data['make'],
         model=data['model'],
         year=data['year'],
-        price=data['price'],
+        cost=data['cost'],
         image=data.get('image'),
         mileage=data.get('mileage'),
         fuel_type=data.get('fuel_type')
@@ -101,7 +91,7 @@ def update_car(car_id):
     car.make = data.get('make', car.make)
     car.model = data.get('model', car.model)
     car.year = data.get('year', car.year)
-    car.price = data.get('price', car.price)
+    car.cost = data.get('cost', car.cost)
     car.image = data.get('image', car.image)
     car.mileage = data.get('mileage', car.mileage)
     car.fuel_type = data.get('fuel_type', car.fuel_type)
