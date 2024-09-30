@@ -1,0 +1,7 @@
+website/node_modules
+website/package-lock.json
+website/build
+
+backend/.backend-venv
+
+postgres_setup/.postgres-venv

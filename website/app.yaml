@@ -1,0 +1,31 @@
+runtime: nodejs18
+service: @@YOUR_NAME_HERE@@
+env: standard
+
+instance_class: F1
+
+env_variables:
+  USE_MOCK_DATA: 'false'
+  CLOUD_SQL_CONNECTION_NAME: 'mtc-cloud101:us-central1:cars'
+
+automatic_scaling:
+  min_idle_instances: 0
+  max_idle_instances: 1
+  min_pending_latency: 3000ms
+  max_pending_latency: automatic
+  max_instances: 2
+
+handlers:
+- url: /static
+  static_dir: build/static
+
+- url: /(.*\.(json|ico|js|html))$
+  static_files: build/\1
+  upload: build/.*\.(json|ico|js|html)$
+
+- url: /.*
+  static_files: build/index.html
+  upload: build/index.html
+
+env_variables:
+  NODE_ENV: 'production'
