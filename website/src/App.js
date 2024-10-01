@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './components/card';
 import { Button } from './components/button';
