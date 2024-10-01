@@ -1,0 +1,8 @@
+modules = ["nodejs-20", "python-3.11", "gcloud"]
+[[ports]]
+localPort = 3000
+externalPort = 80
+
+[[ports]]
+localPort = 8080
+externalPort = 8080
