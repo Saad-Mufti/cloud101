@@ -1,6 +1,7 @@
 ## Setup (Local and Production)
 ```bash
 python3 -m venv .backend-venv
+source .backend-venv/bin/activate
 pip install -r requirements.txt
 ```
 If you get the following error from the `pip install`:

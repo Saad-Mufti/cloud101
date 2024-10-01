@@ -19,3 +19,5 @@ Instructions for the frontend, backend, and database are in their respective fol
 gcloud auth login --no-launch-browser
 gcloud init
 ```
+
+When running the init command you may be asked a few questions

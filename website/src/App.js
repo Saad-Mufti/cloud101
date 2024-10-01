@@ -6,7 +6,7 @@ import { Search } from 'lucide-react';
 import { Select } from './components/select';
 
 const API_URL = process.env.REACT_APP_BACKEND_BASE_URL || 'http://localhost:5000/api';
-console.log("env = " + process.env)
+console.log("url = " + API_URL)
 console.log("env = " + process.env["NODE_ENV"])
 
 const carData = [
