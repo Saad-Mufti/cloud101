@@ -5,3 +5,5 @@ website/build
 backend/.backend-venv
 
 postgres_setup/.postgres-venv
+postgres_setup/postgres
+postgres_setup/logfile

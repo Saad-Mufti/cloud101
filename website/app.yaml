@@ -1,12 +1,14 @@
 runtime: nodejs18
-service: @@YOUR_NAME_HERE@@
+service: saad-mufti
 env: standard
 
 instance_class: F1
 
 env_variables:
   USE_MOCK_DATA: 'false'
+  REACT_APP_BACKEND_BASE_URL: 'http://34.170.200.38:8080'
   CLOUD_SQL_CONNECTION_NAME: 'mtc-cloud101:us-central1:cars'
+  NODE_ENV: 'production'
 
 automatic_scaling:
   min_idle_instances: 0
@@ -26,6 +28,3 @@ handlers:
 - url: /.*
   static_files: build/index.html
   upload: build/index.html
-
-env_variables:
-  NODE_ENV: 'production'
