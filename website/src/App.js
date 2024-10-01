@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './components/card';
 import { Button } from './components/button';
@@ -6,7 +5,7 @@ import { Input } from './components/input';
 import { Search } from 'lucide-react';
 import { Select } from './components/select';
 
-const API_URL = process.env.REACT_APP_BACKEND_BASE_URL || 'http://localhost:5000/api';
+const API_URL = process.env.NODE_ENV == "production" ? "http://34.170.200.38:8080/api" : "http://localhost:5000/api";
 console.log("url = " + API_URL)
 console.log("env = " + process.env["NODE_ENV"])
 
